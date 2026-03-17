@@ -4,12 +4,14 @@ import { Minus, Plus } from 'lucide-react-native';
 import BotaoAposta from "../BotaoAposta";
 
 interface IPlayerInfos {
+    vitorias: number;
     pontos: number;
     setPontos: any;
     titulo: string;
 }
 
 const PlayerInfos: React.FC<IPlayerInfos> = ({
+    vitorias,
     pontos,
     titulo,
     setPontos,
@@ -40,6 +42,7 @@ const PlayerInfos: React.FC<IPlayerInfos> = ({
         }}>
             <Text>{titulo}</Text>
             {pontos}
+            <Text>Ganhou {vitorias}</Text>
             <View style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
