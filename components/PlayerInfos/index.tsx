@@ -5,10 +5,12 @@ import { Minus, Plus } from 'lucide-react-native';
 interface IPlayerInfos {
     pontos: number;
     setPontos: any;
+    titulo: string;
 }
 
 const PlayerInfos: React.FC<IPlayerInfos> = ({
     pontos,
+    titulo,
     setPontos,
 }) => {
 
@@ -24,11 +26,12 @@ const PlayerInfos: React.FC<IPlayerInfos> = ({
 
     return (
         <View style={{
+            width: '50%',
             justifyContent: 'center',
             alignItems: 'center',
             paddingHorizontal: 40,
         }}>
-            <Text>Marcador</Text>
+            <Text>{titulo}</Text>
             {pontos}
             <View style={{
                 flexDirection: 'row',
