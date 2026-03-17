@@ -1,6 +1,6 @@
 import PlayerInfos from "@/components/PlayerInfos";
 import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { Text, Touchable, TouchableOpacity, View } from "react-native";
 
 const Index = () => {
     const [player1Vitorias, setPlayer1Vitorias] = useState<number>(0);
@@ -21,6 +21,18 @@ const Index = () => {
             setPlayer2Pontos(0);
         }
     }, [player1Pontos, player2Pontos]);
+
+    const handleReiniciar = () => {
+        setPlayer1Pontos(0);
+        setPlayer2Pontos(0);
+        setPlayer1Vitorias(0);
+        setPlayer2Vitorias(0);
+    }
+
+    const handleNovoJogo = () => {
+        setPlayer1Pontos(0);
+        setPlayer2Pontos(0);
+    }
 
     return (
         <View>
@@ -54,6 +66,45 @@ const Index = () => {
                     setPontos={setPlayer2Pontos}
                 />
             </View>
+
+            <TouchableOpacity 
+                onPress={handleReiniciar}
+                style={{
+                    padding: 10,
+                    margin: "auto",
+                    backgroundColor: "seagreen",
+                    width: "70%",
+                    marginTop: 15,
+                    borderRadius: 15,
+                }}
+            >
+                <Text style={{
+                    textAlign: 'center',
+                    color: 'white',
+                    fontSize: 20,
+                }}>
+                    REINICIAR
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+                onPress={handleNovoJogo}
+                style={{
+                    padding: 10,
+                    margin: "auto",
+                    backgroundColor: "seagreen",
+                    width: "70%",
+                    marginTop: 15,
+                    borderRadius: 15,
+                }}
+            >
+                <Text style={{
+                    textAlign: 'center',
+                    color: 'white',
+                    fontSize: 20,
+                }}>
+                    NOVO JOGO
+                </Text>
+            </TouchableOpacity>
         </View>
     )
 }
