@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native"
 import { Minus, Plus } from 'lucide-react-native';
+import BotaoAposta from "../BotaoAposta";
 
 interface IPlayerInfos {
     pontos: number;
@@ -14,14 +15,20 @@ const PlayerInfos: React.FC<IPlayerInfos> = ({
     setPontos,
 }) => {
 
-    const handlePontosChange = (tipo: "+" | "-") => {
+    const handlePontosChange = (tipo: "+" | "-", valor?: number | null) => {
+        let newPontos = 0;
         if (tipo === "+") {
-            setPontos((prev: number) => prev + 1);
+            newPontos = pontos + 1;
         } else {
             if (pontos != 0) {
-                setPontos((prev: number) => prev - 1);
+                newPontos = pontos - 1;
             }
         }
+        if (valor != undefined) {
+            newPontos = pontos + valor;
+        }
+        if (newPontos > 12) return 12;
+        setPontos(newPontos)
     }
 
     return (
@@ -66,6 +73,26 @@ const PlayerInfos: React.FC<IPlayerInfos> = ({
                     <Minus color="white" />
                 </TouchableOpacity>
             </View>
+            <BotaoAposta 
+                cor="teal"
+                titulo="truco"
+                funcao={() => handlePontosChange("+", 3)}
+            />
+            <BotaoAposta 
+                cor="darkblue"
+                titulo="seiss"
+                funcao={() => handlePontosChange("+", 6)}
+            />
+            <BotaoAposta 
+                cor="purple"
+                titulo="novee"
+                funcao={() => handlePontosChange("+", 9)}
+            />
+            <BotaoAposta 
+                cor="darkred"
+                titulo="dozii"
+                funcao={() => handlePontosChange("+", 12)}
+            />
         </View>
     )
 }

@@ -29,7 +29,7 @@ const Index = () => {
                     titulo="Nós"
                     pontos={player1Pontos}
                     setPontos={setPlayer1Pontos}
-                    />
+                />
                 <PlayerInfos
                     titulo="Eles"
                     pontos={player2Pontos}
